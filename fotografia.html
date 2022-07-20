@@ -1,89 +1,167 @@
 <!DOCTYPE HTML>
 
 <html>
-	<head>
-		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-		<title>Fotografia</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css"/>
-		<link rel="stylesheet" href="assets/css/mycss.css"/>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	</head>
-	<body class="is-preload">
+<head>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>Fotografia</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <link rel="stylesheet" href="assets/css/mycss.css"/>
+  <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+-->
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.css"
+            rel="stylesheet"
+    />
+
+    <script src="assets/js/foto-loader.js"></script>
 
 
-	<!--Navigation bar-->
-	<div id="header">
-	</div>
+    <style>
 
-	<script>
+        .foto-scroller{
+        display:grid;
+        gap: 5px;
+        grid-auto-flow:column;
+        grid-auto-columns:18%;
+
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        }
+
+        #fullscreen{
+        position:fixed;
+        top:0;left:0;
+        background:rgba(0,0,0,.9);
+        height:100%;
+        width:100%;
+        z-index:100;
+        display:none;
+        }
+
+        #fullscreen span{
+        position : absolute;
+        top:0; right:10px;
+        font-size:40px;
+        font-weigth:bolder;
+        color:#fff;
+        cursor:pointer;
+        z-index:1000;
+
+        }
+
+        #fullscreen img{
+        position : absolute;
+        top:50%; left:50%;
+        transform:translate(-50%,-50%);
+        width : 750px;
+        z-index:1000;
+        object-fit:cover;
+        }
+
+        @media (max-width:768px){
+            #fullscreen img{
+                width:95%;
+            }
+        }
+    </style>
+
+</head>
+<body class="is-preload" >
+
+
+<!--Navigation bar-->
+<div id="header">
+    <script>
 $(function(){
   $("#header").load("nav.html");
 });
 
+
+    </script>
+    <!--end of Navigation bar-->
+</div>
+
+<!-- Main -->
+<div id="main">
+    <section class="two" >
+        <div class="container" >
+            <h3 class="text-center">Fotos de Estudio</h3>
+            <div id="fotosEstudio" class="foto-scroller" >
+                <script>placeImagesThumbs(14,"fotosEstudio","Fotos Estudio") </script>
+                <!--
+                    <div class="hover-zoom">
+                        <img src="images/thumbs/Fotos Estudio/fotosestudio1.jpg" class="w-100">
+                    </div>
+					-->
+            </div>
+        </div>
+    </section>
+
+    <section class="tree" >
+        <div class="container" >
+            <h3 class="text-center">Fotos de Concerto</h3>
+            <div id="fotosConcerto" class="foto-scroller" >
+                <script>placeImagesThumbs(15,"fotosConcerto","Fotos Concerto") </script>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div id="fullscreen">
+    <span>&times;</span>
+    <img src="images/thumbs/Fotos Estudio/fotosestudio5.jpg">
+</div>
+<script type="text/javascript">
+    document.querySelectorAll('.foto-scroller img').forEach(image =>{
+        image.onclick = () =>{
+            document.querySelector('#fullscreen').style.display = 'block';
+            let url = image.getAttribute('src');
+            url = url.replace('thumbs/','');
+            document.querySelector('#fullscreen img').src = url;
+        }
+        });
+        document.querySelector('#fullscreen span').onclick = () =>{
+            document.querySelector('#fullscreen').style.display = 'none';
+        }
+
 </script>
-	<!--end of Navigation bar-->
 
-		<!-- Main -->
-			<div id="main">
-				<section class="two" id="clip">
-					<div class="container">
-
-						<div class="row">
-							<div class="col-lg-4 mb-2 mb-lg-0">
-								<img
-										src="images/Fotos Estudio/fotosestudio1.jpg"
-										class="w-100 shadow-1-strong rounded mb-2"
-										alt="Boat on Calm Water"
-								/>
-
-								<img
-										src="images/Fotos Estudio/fotosestudio2.jpg"
-										class="w-100 shadow-1-strong rounded mb-2"
-										alt="Wintry Mountain Landscape"
-								/>
-							</div>
-							<div class="col-lg-4 mb-2 mb-lg-0">
-								<img
-										src="images/Fotos Estudio/fotosestudio3.jpg"
-										class="w-100 shadow-1-strong rounded mb-2"
-										alt="Mountains in the Clouds"
-								/>
-
-								<img
-										src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-										class="w-100 shadow-1-strong rounded mb-4"
-										alt="Boat on Calm Water"
-								/>
-							</div>
-						</div>
-
-					</div>
-
-				</section>
-			</div>
-
-	<!-- Footer -->
-	<div id="footer">
-	</div>
-	<script>
+<!-- Footer -->
+<div id="footer">
+</div>
+<script>
 $(function(){
   $("#footer").load("footer.html");
 });
 
-    </script>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+</script>
 
-	</body>
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
 </html>
