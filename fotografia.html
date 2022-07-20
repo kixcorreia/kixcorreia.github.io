@@ -98,7 +98,31 @@ $(function(){
 
 <!-- Main -->
 <div id="main">
-    <section class="two" >
+
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark ">
+
+        <div class="navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav justify-content-center">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#_1">Estudio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#_2">Concertos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#_3">Life Style</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#_4">Produto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#_5">Comerciais</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="two" id="_1" >
         <div class="container" >
             <h3 class="text-center">Fotos de Estudio</h3>
             <div id="fotosEstudio" class="foto-scroller" >
@@ -112,11 +136,41 @@ $(function(){
         </div>
     </section>
 
-    <section class="tree" >
+    <section class="tree" id="_2">
         <div class="container" >
             <h3 class="text-center">Fotos de Concerto</h3>
             <div id="fotosConcerto" class="foto-scroller" >
                 <script>placeImagesThumbs(15,"fotosConcerto","Fotos Concerto") </script>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="four" id="_3" >
+        <div class="container" >
+            <h3 class="text-center">Fotos Live Style</h3>
+            <div id="fotosRandom" class="foto-scroller" >
+                <script>placeImagesThumbs(17,"fotosRandom","Fotos Random") </script>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="tree" id="_4">
+        <div class="container" >
+            <h3 class="text-center">Fotos de Produto</h3>
+            <div id="fotosProduto" class="foto-scroller" >
+                <script>placeImagesThumbs(15,"fotosProduto","Fotos Produto") </script>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="four" id="_5">
+        <div class="container" >
+            <h3 class="text-center">Fotos Comerciais</h3>
+            <div id="fotosComerciais" class="foto-scroller" >
+                <script>placeImagesThumbs(11,"fotosComerciais","Fotos Comerciais") </script>
 
             </div>
         </div>
